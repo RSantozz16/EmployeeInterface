@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { Router } from '@angular/router';
-// import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 
 
 
@@ -12,29 +12,40 @@ import { Router } from '@angular/router';
 })
 export class EmployeeComponent implements OnInit {
 
-  // insertForm: FormGroup;
-  empName: string = '';
-  empAddress: string = '';
-  empPhone: number = 0;
+  messageForm: FormGroup;
   success = false;
   submited = false;
+
+  form = {name:'', address:'', phone:0}
   
   users: Object;
 
-  constructor(private data: DataService, private router: Router) { }
+  constructor(private data: DataService, private router: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.messageForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      address: ['', Validators.required],
+      phone: ['', Validators.required]
+    });
+    this.select();
+  }
+
+  select(){
+    this.users = []
     this.data.getEmployee().subscribe(data => {
-        this.users = data
-        console.log(data);
+      this.users = data
+      console.log(data);
       }
     );
   }
 
-  // onFormSubmit(form:NgForm){
-  //   this.data.postEmployee(form).subscribe(res => {
-  //     let id = res['_id'];
-  //   })
-  // }
+  onSubmit(){
+    this.data.postEmployee({name:this.form.name, address:this.form.address, phone:this.form.phone})
+    .subscribe(em => {
+      console.log(em);
+      this.select();
+    })
+  }
 
 }

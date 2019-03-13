@@ -20,8 +20,12 @@ export class DataService {
     return this.http.get('http://localhost:2020/api/employees')
   }
 
-  postEmployee(data): Observable<any>{
-    return this.http.post(apiUrl, data, httpOptions);
+  postEmployee(data){
+    return this.http.post('http://localhost:2020/api/employees', data);
+  }
+
+  patchEmployee(data){
+    return this.http.patch('http://localhost:2020/api/employees', data);
   }
 
 }

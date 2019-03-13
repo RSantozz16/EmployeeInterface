@@ -1,18 +1,38 @@
 <h1>The Employees</h1>
 
-<!-- <p><b>Input new Employee</b></p>
-<form>
-  Name:<br>
-  <input type="text" name="empName" placeholder="Input your name">
-  <br>
-  Address:<br>
-  <input type="text" name="empAddress" placeholder="Input your address">
-  <br>
-  Phone:<br>
-  <input type="text" name="empPhone" placeholder="Input your phone without 0">
-  <br><br>
-  <input type="submit" value="Submit">
-</form>  -->
+<form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
+
+    <h5 *ngIf="!messageForm.invalid">Your form is valid!</h5>
+
+    <label>
+      Name:<br>
+      <input type="text" formControlName="name" [(ngModel)]="form.name">
+      <br>
+      <div *ngIf="submitted && messageForm.controls.name.errors" class="error">
+        <div *ngIf="messageForm.controls.name.errors.required">Your name is required</div>
+      </div>
+    </label>
+  
+    <label>
+      Addres:<br>
+      <input formControlName="address" [(ngModel)]="form.address">
+      <br>
+      <div *ngIf="submitted && messageForm.controls.message.errors" class="error">
+        <div *ngIf="messageForm.controls.message.errors.required">A message is required</div>
+      </div>
+    </label>
+
+    <label>
+        Phone:<br>
+        <input type="text" formControlName="phone" [(ngModel)]="form.phone">
+        <br>
+        <div *ngIf="submitted && messageForm.controls.message.errors" class="error">
+          <div *ngIf="messageForm.controls.message.errors.required">A message is required</div>
+        </div>
+      </label>
+    <br>
+    <input type="submit" value="Add Employee" class="cta">
+</form>
 
 <br>
 <br>
