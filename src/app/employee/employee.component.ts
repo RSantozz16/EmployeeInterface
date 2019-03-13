@@ -15,6 +15,7 @@ export class EmployeeComponent implements OnInit {
   messageForm: FormGroup;
   success = false;
   submited = false;
+  id = '';
 
   form = {name:'', address:'', phone:0}
   
@@ -42,6 +43,24 @@ export class EmployeeComponent implements OnInit {
 
   onSubmit(){
     this.data.postEmployee({name:this.form.name, address:this.form.address, phone:this.form.phone})
+    .subscribe(em => {
+      console.log(em);
+      this.select();
+    })
+  }
+
+  editUser(user: any){
+    console.log("Ini ID : ", user._id);
+    this.id = user._id;
+    this.messageForm = this.formBuilder.group({
+      name: [user.name, Validators.required],
+      address: [user.address, Validators.required],
+      phone: [user.phone, Validators.required]
+    });
+  }
+
+  patchFunction(){
+    this.data.patchEmployee({name:this.form.name, address:this.form.address, phone:this.form.phone}, this.id)
     .subscribe(em => {
       console.log(em);
       this.select();

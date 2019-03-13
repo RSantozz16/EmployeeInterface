@@ -24,8 +24,8 @@ export class DataService {
     return this.http.post('http://localhost:2020/api/employees', data);
   }
 
-  patchEmployee(data){
-    return this.http.patch('http://localhost:2020/api/employees', data);
+  patchEmployee(data, id){
+    return this.http.put('http://localhost:2020/api/employees/' +id, data);
   }
 
 }
