@@ -9,6 +9,6 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
   getUsers() {
-    return this.http.get('http://localhost:2020/api/employees')
+    return this.http.get('http://localhost:2020/employees')
   }
 }

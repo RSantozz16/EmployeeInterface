@@ -7,10 +7,30 @@
   </li>
 </ul> -->
 
-<table *ngIf="users">
+<!-- <table *ngIf="users" class="responsive-table">
+  <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Phone</th>
+  </tr>
   <tr *ngFor="let user of users">
     <td>{{ user.name }}</td>
     <td>{{ user.address }}</td>
     <td>{{ user.phone }}</td>
   </tr>
-</table>
+</table> -->
+
+
+<ul class="responsive-table">
+    <li class="table-header">
+      <div class="col col-1">Name</div>
+      <div class="col col-2">Address</div>
+      <div class="col col-3">Phone</div>
+    </li>
+    <li class="table-row" *ngFor="let user of users">
+      <div class="col col-1" data-label="Job Id">{{ user.name }}</div>
+      <div class="col col-2" data-label="Customer Name">{{ user.address }}</div>
+      <div class="col col-3" data-label="Amount">{{ user.phone }}</div>
+    </li>
+    
+  </ul>
