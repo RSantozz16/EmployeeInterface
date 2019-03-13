@@ -15,9 +15,9 @@ export class EmployeeComponent implements OnInit {
   ngOnInit() {
     this.data.getUsers().subscribe(data => {
         this.users = data
-        console.log(this.users);
+        console.log(data);
       }
     );
   }
-  
+
 }

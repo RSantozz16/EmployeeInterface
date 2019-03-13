@@ -1,14 +1,16 @@
 <h1>Gatot Kaca's Employee</h1>
 
-<ul *ngIf="users">
-  <li *ngFor="let user of users.data">
-    <p>{{ user.first_name }} {{ user.last_name }}</p>
+<!-- <ul *ngIf="users">
+  <li *ngFor="let user of users">
+    <p>{{ user.name }}</p>
+    <p>{{ user.address }}</p>
   </li>
-</ul>
+</ul> -->
 
-<!-- <table>
-  <tr ng-repeat="x in names">
-    <td>{{ x.Name }}</td>
-    <td>{{ x.Country }}</td>
+<table *ngIf="users">
+  <tr *ngFor="let user of users">
+    <td>{{ user.name }}</td>
+    <td>{{ user.address }}</td>
+    <td>{{ user.phone }}</td>
   </tr>
-</table> -->
+</table>
