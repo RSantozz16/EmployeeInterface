@@ -1,16 +1,36 @@
-<h1>Gatot Kaca's Employee</h1>
+<h1>The Employees</h1>
 
-<!-- <ul *ngIf="users">
-  <li *ngFor="let user of users">
-    <p>{{ user.name }}</p>
-    <p>{{ user.address }}</p>
-  </li>
-</ul> -->
+<!-- <p><b>Input new Employee</b></p>
+<form>
+  Name:<br>
+  <input type="text" name="empName" placeholder="Input your name">
+  <br>
+  Address:<br>
+  <input type="text" name="empAddress" placeholder="Input your address">
+  <br>
+  Phone:<br>
+  <input type="text" name="empPhone" placeholder="Input your phone without 0">
+  <br><br>
+  <input type="submit" value="Submit">
+</form>  -->
 
-<table *ngIf="users">
-  <tr *ngFor="let user of users">
-    <td>{{ user.name }}</td>
-    <td>{{ user.address }}</td>
-    <td>{{ user.phone }}</td>
-  </tr>
+<br>
+<br>
+<table *ngIf="users" class="empTable">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Phone</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.name }}</td>
+      <td>{{ user.address }}</td>
+      <td>{{ user.phone }}</td>
+      <td>Edit || Detele</td>
+    </tr>
+  </tbody>
 </table>
