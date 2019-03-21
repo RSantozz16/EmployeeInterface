@@ -18,7 +18,7 @@ export class EmployeeComponent implements OnInit {
   id = '';
   errorMessage: string;
 
-  form = {name:'', address:'', phone:0}
+  form = {name:null, address:null, phone:null}
   
   users: Object;
 
