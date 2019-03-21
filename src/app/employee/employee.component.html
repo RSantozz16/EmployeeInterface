@@ -34,13 +34,12 @@
     <input type="submit" value="Add Employee" class="cta">
     <input type="button" value="Update" class="cta" (click)="patchFunction()">
 </form>
-
+<h5 *ngIf="errorMessage">Error: {{ errorMessage }}</h5>
 <br>
 <br>
 <table *ngIf="users" class="empTable">
   <thead>
     <tr>
-      <th>ID</th>
       <th>Name</th>
       <th>Address</th>
       <th>Phone</th>
@@ -49,7 +48,6 @@
   </thead>
   <tbody>
     <tr *ngFor="let user of users">
-      <td>{{ user._id }}</td>
       <td>{{ user.name }}</td>
       <td>{{ user.address }}</td>
       <td>{{ user.phone }}</td>

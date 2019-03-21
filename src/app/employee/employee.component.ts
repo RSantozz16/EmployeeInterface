@@ -16,6 +16,7 @@ export class EmployeeComponent implements OnInit {
   success = false;
   submited = false;
   id = '';
+  errorMessage: string;
 
   form = {name:'', address:'', phone:0}
   
@@ -46,6 +47,8 @@ export class EmployeeComponent implements OnInit {
     .subscribe(em => {
       console.log(em);
       this.select();
+    }, error => {
+      this.errorMessage = error.message;
     })
   }
 
