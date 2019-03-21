@@ -48,7 +48,7 @@ export class EmployeeComponent implements OnInit {
       console.log(em);
       this.select();
     }, error => {
-      this.errorMessage = error.message;
+      alert(error.message);
     })
   }
 
